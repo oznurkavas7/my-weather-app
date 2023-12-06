@@ -7,8 +7,7 @@ import { useContext } from "react";
 import {  GlobalContext } from "./GlobalState";
 
 const MoreWeatherCard = () => {
-
-    const {  weeklyWeather, moreWeather  } = useContext(GlobalContext);
+    const { weeklyWeather, moreWeather } = useContext(GlobalContext);
 
     var result = moreWeather.list.filter(e => !weeklyWeather.list.find(a => e.dt === a.dt));
 

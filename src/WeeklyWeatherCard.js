@@ -6,7 +6,7 @@ import { useContext } from "react";
 import {  GlobalContext } from "./GlobalState";
 
 const WeeklyWeatherCard = ({result}) => {
-    const {  weeklyWeather  } = useContext(GlobalContext);
+    const { weeklyWeather } = useContext(GlobalContext);
 
     var resulArr = result ? result : weeklyWeather && weeklyWeather.list;
 

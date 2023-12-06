@@ -2,12 +2,11 @@ import React from 'react';
 import {
     Card, Typography, CardContent, Grid
 } from '@mui/material';
-import {  GlobalContext   } from "./GlobalState";
+import { GlobalContext } from "./GlobalState";
 import { useContext } from "react";
 
 
 const DailyWeatherCard = () => {
-
     const { weather } = useContext(GlobalContext);
 
     if (!weather) {
@@ -16,6 +15,8 @@ const DailyWeatherCard = () => {
 
     return (
         <div>
+            <h2 align="center">Konumunuz: {weather.name}</h2>
+
             <Grid
                 container
                 spacing={0}
@@ -26,7 +27,7 @@ const DailyWeatherCard = () => {
 
                 <Grid item xs={3}>
                     <Card>
-                        <Card sx={{ background: '#0074B7' }}>
+                        <Card sx={{ background: '#0074B7'}}>
                             <CardContent>
                                 <Typography sx={{ fontSize: 14 }} color="text.secondary" align="center" gutterBottom>
                                     {new Date(weather.dt * 1000).toLocaleDateString()}
