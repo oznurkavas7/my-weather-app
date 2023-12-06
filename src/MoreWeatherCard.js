@@ -1,10 +1,15 @@
 import React from 'react';
 import {
-    Box
+    Box, Slide, Paper
 } from '@mui/material';
 import WeeklyWeatherCard from "./WeeklyWeatherCard";
+import { useContext } from "react";
+import {  GlobalContext } from "./GlobalState";
 
-function MoreWeatherCard({ weeklyWeather, moreWeather }) {
+const MoreWeatherCard = () => {
+
+    const {  weeklyWeather, moreWeather  } = useContext(GlobalContext);
+
     var result = moreWeather.list.filter(e => !weeklyWeather.list.find(a => e.dt === a.dt));
 
     const style = {
@@ -13,22 +18,25 @@ function MoreWeatherCard({ weeklyWeather, moreWeather }) {
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: 800,
-        bgcolor: 'background.paper',
-        border: '2px solid #000',
-        boxShadow: 24,
+        bgcolor: '#BFD7ED',
+        border: '2px solid #003B73',
+        boxShadow: 15,
         p: 4,
     };
 
     if (!weeklyWeather) {
         return <p>Lokasyon erisimine izin vermeniz gerekir...</p>;
-
     }
 
     return (
         <div>
-            <Box sx={style}>
-                <WeeklyWeatherCard weeklyWeather={result} />
-            </Box>
+            <Slide in={true} >
+                <Paper elevation={4}>
+                    <Box sx={style}>
+                        <WeeklyWeatherCard result={result} />
+                    </Box>
+                </Paper>
+            </Slide>
         </div>
     )
 }
